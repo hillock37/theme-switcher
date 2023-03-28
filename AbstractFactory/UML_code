@@ -44,8 +44,8 @@ abstract class Background
 
 class WebPage
 {
++WebPage(SwitchMode mode)
 }
-
 SwitchMode .. Background
 SwitchMode .. LettersColor
 DarkModeFactory --|> SwitchMode
@@ -58,7 +58,5 @@ LightBackground --|> Background
 DarkBackground --|> Background
 LightLetters --|> LettersColor
 DarkLetters --|> LettersColor
-WebPage --> Background
 WebPage --> SwitchMode
-WebPage --> LettersColor
 @enduml
