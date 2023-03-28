@@ -1,0 +1,63 @@
+@startuml
+
+class DarkModeFactory
+{
++ GetBackgroundColor() : Background
++ GetLettersColor() : LettersColor
+}
+
+abstract class LettersColor
+{
+}
+
+class LightModeFactory
+{
++ GetBackgroundColor() : Background
++ GetLettersColor() : LettersColor
+}
+
+interface SwitchMode
+{
++ GetBackgroundColor() : Background
++ GetLettersColor() : LettersColor
+}
+
+class DarkBackground
+{
+}
+
+class LightBackground
+{
+}
+
+class DarkLetters
+{
+}
+
+class LightLetters
+{
+}
+
+abstract class Background
+{
+}
+
+class WebPage
+{
+}
+SwitchMode .. Background
+SwitchMode .. LettersColor
+DarkModeFactory --|> SwitchMode
+LightModeFactory --|> SwitchMode
+DarkModeFactory ..> DarkBackground
+DarkModeFactory ..> LightLetters
+LightModeFactory ..> LightBackground
+LightModeFactory ..> DarkLetters
+LightBackground --|> Background
+DarkBackground --|> Background
+LightLetters --|> LettersColor
+DarkLetters --|> LettersColor
+WebPage --> Background
+WebPage --> SwitchMode
+WebPage --> LettersColor
+@enduml
