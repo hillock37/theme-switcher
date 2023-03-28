@@ -45,6 +45,7 @@ abstract class Background
 class WebPage
 {
 }
+
 SwitchMode .. Background
 SwitchMode .. LettersColor
 DarkModeFactory --|> SwitchMode
