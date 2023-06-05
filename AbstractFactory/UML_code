@@ -1,12 +1,11 @@
 @startuml
-
 class DarkModeFactory
 {
 + GetBackgroundColor() : Background
 + GetLettersColor() : LettersColor
 }
 
-abstract class LettersColor
+Interface LettersColor
 {
 }
 
@@ -38,7 +37,7 @@ class LightLetters
 {
 }
 
-abstract class Background
+Interface Background
 {
 }
 
@@ -46,17 +45,17 @@ class WebPage
 {
 +WebPage(SwitchMode mode)
 }
-SwitchMode .. Background
-SwitchMode .. LettersColor
-DarkModeFactory --|> SwitchMode
-LightModeFactory --|> SwitchMode
-DarkModeFactory ..> DarkBackground
-DarkModeFactory ..> LightLetters
-LightModeFactory ..> LightBackground
-LightModeFactory ..> DarkLetters
-LightBackground --|> Background
-DarkBackground --|> Background
-LightLetters --|> LettersColor
-DarkLetters --|> LettersColor
-WebPage --> SwitchMode
+SwitchMode .... Background
+SwitchMode .... LettersColor
+DarkModeFactory ---|> SwitchMode
+LightModeFactory ---|> SwitchMode
+DarkModeFactory ....> DarkBackground
+DarkModeFactory ....> LightLetters
+LightModeFactory ....> LightBackground
+LightModeFactory ....> DarkLetters
+LightBackground ---|> Background
+DarkBackground ---|> Background
+LightLetters ---|> LettersColor
+DarkLetters ---|> LettersColor
+WebPage ---> SwitchMode
 @enduml
